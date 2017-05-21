@@ -1,0 +1,48 @@
+﻿
+
+<meta name="robots" content="noindex,nofollow">
+<script type="text/javascript" src="https://live.sk-knower.com/lib/jquery-1.10.1.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://live.sk-knower.com/skbeartest/video-js.css">
+<script type='text/javascript' src="https://live.sk-knower.com/skbeartest/video.js"></script>
+<script src="https://live.sk-knower.com/skbeartest/videojs-media-sources.js"></script>
+<script src="https://live.sk-knower.com/skbeartest/videojs.hls.min.js"></script>
+<script src="https://live.sk-knower.com/user/videojs.persistvolume.js"></script>
+<script language='javascript' type='text/javascript'>  
+$(document).ready(  
+    function()  
+    {  
+        $('#coverinfo').delay(1500).hide("slow");  
+    }  
+);  
+</script>  
+<body style="margin: 0px;">
+<div id="successfollow" style="color: white;cursor: pointer;display:none ;position: fixed;  top: 50%;  left: 50%;  background-color: #242424;  border: 5px solid #CDCFCB;  width:300px;  height:130px;  margin-left:-150px;  margin-top:-65px;border-radius: 16px;-webkit-box-shadow: 12px 0 15px -4px #000000, -12px 0 15px -4px#000000;  z-index: 9002;};text-align: center;line-height: 62px;"><div onclick="closeplayer();" style="position: absolute;right: 7px;top: -20px;">關閉</div><div onclick="location.reload();">ERROR:載入時間過長</br>按我重新整理播放器</div></div>
+<a href="https://live.sk-knower.com/" target="_blank"><div id='coverinfo' style="width: 100%;height: 100%;position: fixed;z-index: 9;background-image:s url(https://live.sk-knower.com/flag/skcover.png);background-attachment: fixed;background-position: center;background-repeat: no-repeat;"></div></a>
+<video id="my_video_1" class="info_over video-js vjs-default-skin" controls preload="auto" width="" height="100%" data-setup='{"controls":true,"autoplay":true,"techOrder":["flash"]}'>
+<source src="rtmp://198.255.17.66:1935/live/?C6Y1mJKvgj2dcGGCIStPAT9xe85O4Csv&live_serjunautomata" type="rtmp/mp4">
+</video>
+
+<script type="text/javascript">
+var myPlayer = videojs('my_video_1');
+videojs("my_video_1").ready(function(){
+var myPlayer = this;
+      myPlayer.persistvolume({
+        namespace: "savevolume"
+      });
+myPlayer.on("pause", function () {
+myPlayer.on("play", function () { location.reload(); });
+});
+myPlayer.on("error", function () { $( "#successfollow" ).show(); });
+myPlayer.on('mouseout', function(){ 
+  $('.vjs-control-bar').addClass('vjs-fade-out'); 
+});
+
+myPlayer.on('mouseover', function(){
+  $('.vjs-control-bar').removeClass('vjs-fade-out'); 
+});
+});
+function closeplayer(){
+$( "#successfollow" ).hide();
+}
+</script>
+</body>
